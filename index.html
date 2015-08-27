@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset ="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<META content="no-cache" http-equiv="pragma">
+<META content="no-cache" http-equiv="cache-control">
+<META content="0" http-equiv="expires">
+<title>倒计时js</title>
+<style>
+	.countdown .number {
+		font-size: 16px;
+		font-weight: 600;
+		padding: 8px 5px;
+		text-align: center;
+		color: #FFF;
+		background: #67625E;
+		margin: 0 5px;
+		border-radius: 5px;
+	}
+	pre{
+		padding: 16px;
+		overflow: auto;
+		font-size: 85%;
+		line-height: 1.45;
+		background-color: #F7F7F7;
+		border-radius: 3px;
+	}
+</style>
+<script src="countdown.js"></script>
+</head>
+<body>
+<section>
+<h2>默认倒计时：</h2>
+	<div id="countdown" class="countdown">
+		
+	</div>
+	<h6>代码格式：</h6>
+	<pre>
+		new CountDown();
+	</pre>
+	<script>
+		new CountDown();
+	</script>
+</section>
+<section>
+<h2>自定义模版倒计时：</h2>
+	<div id="countdown2" class="countdown">
+		
+	</div>
+	<h6>代码格式：</h6>
+	<pre>
+		new CountDown({"template":'<span class="label">自定义倒计时模版：</span><span class="number" id="countdown_hour_{{id}}">{{hour}}</span>小时<span class="number" id="countdown_minutes_{{id}}">{{minutes}}</span>分<span class="number" id="countdown_seconds_{{id}}">{{seconds}}</span>秒'});
+		注意：日，时，分，秒的容器ID前缀和数据填充部分“{{xxx}}”不能修改！其它可以任意定义
+		{{id}}代表日，时，分，秒的容器ID后缀  由当前倒计时实例的时间戳生成
+		{{day}}:代表天
+		{{hour}}:代表时
+		{{minutes}}:代表分
+		{{seconds}}:代表秒
+	</pre>
+	<script>
+		new CountDown({"id":"countdown1","template":'<span class="label">自定义倒计时模版：</span><span class="number" id="countdown_hour_{{id}}">{{hour}}</span>小时<span class="number" id="countdown_minutes_{{id}}">{{minutes}}</span>分<span class="number" id="countdown_seconds_{{id}}">{{seconds}}</span>秒'});
+	</script>
+</section>	
+
+<section>
+<h2>传入系统时间倒计时：</h2>
+	<div id="countdown2" class="countdown">
+		
+	</div>
+	<h6>代码格式：</h6>
+	<pre>
+		var today=new Date().getTime();
+		new CountDown({"id":"countdown2","currTime":today,"beginTime":today+3*24*60*60*1000});
+		currTime:代表系统的当前时间    单位为毫秒
+		beginTime:代表系统传回的倒计时开始时间  单位为毫秒		
+	</pre>
+	<script>
+		var today=new Date().getTime();
+		new CountDown({"id":"countdown2","currTime":today,"beginTime":today+3*24*60*60*1000});
+	</script>
+</section>	
+
+
+<section>
+<h2>有传入回调的倒计时：</h2>
+	<div id="countdown3" class="countdown">
+		
+	</div>
+	<h6>代码格式：</h6>
+	<pre>
+		var today=new Date().getTime();
+		new CountDown({"id":"countdown3","currTime":today,"beginTime":today+10*1000,callback:function(){
+			alert("倒计时已经完成！");
+		}});
+		callback:可传入任何你需要在页面上处理的操作！
+	</pre>
+	<script>
+		var today=new Date().getTime();
+		new CountDown({"id":"countdown3","currTime":today,"beginTime":today+10*1000,callback:function(){
+			alert("倒计时已经完成！");
+		}});
+	</script>
+</section>
+</body>
+</html>
