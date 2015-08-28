@@ -63,45 +63,47 @@
 		{{seconds}}:代表秒
 	</pre>
 	<script>
-		new CountDown({"id":"countdown1","template":'<span class="label">自定义倒计时模版：</span><span class="number" id="countdown_hour_{{id}}">{{hour}}</span>小时<span class="number" id="countdown_minutes_{{id}}">{{minutes}}</span>分<span class="number" id="countdown_seconds_{{id}}">{{seconds}}</span>秒'});
+		//new CountDown({"id":"countdown2","template":'<span class="label">自定义倒计时模版：</span><span class="number" id="countdown_hour_{{id}}">{{hour}}</span>小时<span class="number" id="countdown_minutes_{{id}}">{{minutes}}</span>分<span class="number" id="countdown_seconds_{{id}}">{{seconds}}</span>秒'});
+		var today=new Date().getTime();
+		new CountDown({"id":"countdown2","currTime":today,"beginTime":today+3*24*60*60*1000,"template":'<span class="label">自定义倒计时模版：</span><span class="number" id="countdown_day_{{id}}">{{day}}</span>天'});
 	</script>
 </section>	
 
 <section>
 <h2>传入系统时间倒计时：</h2>
-	<div id="countdown2" class="countdown">
-		
-	</div>
-	<h6>代码格式：</h6>
-	<pre>
-		var today=new Date().getTime();
-		new CountDown({"id":"countdown2","currTime":today,"beginTime":today+3*24*60*60*1000});
-		currTime:代表系统的当前时间    单位为毫秒
-		beginTime:代表系统传回的倒计时开始时间  单位为毫秒		
-	</pre>
-	<script>
-		var today=new Date().getTime();
-		new CountDown({"id":"countdown2","currTime":today,"beginTime":today+3*24*60*60*1000});
-	</script>
-</section>	
-
-
-<section>
-<h2>有传入回调的倒计时：</h2>
 	<div id="countdown3" class="countdown">
 		
 	</div>
 	<h6>代码格式：</h6>
 	<pre>
 		var today=new Date().getTime();
-		new CountDown({"id":"countdown3","currTime":today,"beginTime":today+10*1000,callback:function(){
+		new CountDown({"id":"countdown3","currTime":today,"beginTime":today+3*24*60*60*1000});
+		currTime:代表系统的当前时间    单位为毫秒
+		beginTime:代表系统传回的倒计时开始时间  单位为毫秒		
+	</pre>
+	<script>
+		var today=new Date().getTime();
+		new CountDown({"id":"countdown3","currTime":today,"beginTime":today+3*24*60*60*1000});
+	</script>
+</section>	
+
+
+<section>
+<h2>有传入回调的倒计时：</h2>
+	<div id="countdown4" class="countdown">
+		
+	</div>
+	<h6>代码格式：</h6>
+	<pre>
+		var today=new Date().getTime();
+		new CountDown({"id":"countdown4","currTime":today,"beginTime":today+10*1000,callback:function(){
 			alert("倒计时已经完成！");
 		}});
 		callback:可传入任何你需要在页面上处理的操作！
 	</pre>
 	<script>
 		var today=new Date().getTime();
-		new CountDown({"id":"countdown3","currTime":today,"beginTime":today+10*1000,callback:function(){
+		new CountDown({"id":"countdown4","currTime":today,"beginTime":today+10*1000,callback:function(){
 			alert("倒计时已经完成！");
 		}});
 	</script>
