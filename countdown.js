@@ -119,11 +119,11 @@
             var t=intervalTime;
             var template=that.options.template;
             var ext=that.options.ext;
+            var day=parseInt(t/(1000*60*60*24),10);
+            var hour=parseInt((t-(day*1000*60*60*24))/(1000*60*60),10);
+            var minutes=parseInt((t-(day*1000*60*60*24)-(hour*1000*60*60))/(1000*60),10);
+            var seconds=parseInt((t-(day*1000*60*60*24)-(hour*1000*60*60)-(minutes*1000*60))/1000,10);
             if(template.indexOf("{{day}}")!=-1){
-                var day=parseInt(t/(1000*60*60*24),10);
-                var hour=parseInt((t-(day*1000*60*60*24))/(1000*60*60),10);
-                var minutes=parseInt((t-(day*1000*60*60*24)-(hour*1000*60*60))/(1000*60),10);
-                var seconds=parseInt((t-(day*1000*60*60*24)-(hour*1000*60*60)-(minutes*1000*60))/1000,10);
                 if(day<10){
                     day="0"+day;
                 }
@@ -140,9 +140,9 @@
                 that.showCountDown({day:day,hour:hour,minutes:minutes,seconds:seconds});
             }else{
                 if(template.indexOf("{{hour}}")!=-1){
-                    var hour=parseInt(t/(1000*60*60),10);
-                    var minutes=parseInt((t-(hour*1000*60*60))/(1000*60),10);
-                    var seconds=parseInt((t-(hour*1000*60*60)-(minutes*1000*60))/1000,10);
+//                    var hour=parseInt(t/(1000*60*60),10);
+//                    var minutes=parseInt((t-(hour*1000*60*60))/(1000*60),10);
+//                    var seconds=parseInt((t-(hour*1000*60*60)-(minutes*1000*60))/1000,10);
                     if(hour<10){
                         hour="0"+hour;
                     }
@@ -156,8 +156,8 @@
                     that.showCountDown({hour:hour,minutes:minutes,seconds:seconds});
                 }else{
                     if(template.indexOf("{{minutes}}")!=-1){
-                        var minutes=parseInt(t/(1000*60),10);
-                        var seconds=parseInt((t-(hour*1000*60*60)-(minutes*1000*60))/1000,10);
+//                        var minutes=parseInt(t/(1000*60),10);
+//                        var seconds=parseInt((t-(hour*1000*60*60)-(minutes*1000*60))/1000,10);
                         if(minutes<10){
                             minutes="0"+minutes;
                         }
@@ -168,7 +168,7 @@
                         that.showCountDown({minutes:minutes,seconds:seconds});
                     }else{
                         if(template.indexOf("{{seconds}}")!=-1){
-                            var seconds=parseInt((t-(hour*1000*60*60)-(minutes*1000*60))/1000,10);
+//                            var seconds=parseInt((t-(hour*1000*60*60)-(minutes*1000*60))/1000,10);
                             if(seconds<10){
                                 seconds="0"+seconds;
                             }
