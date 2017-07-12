@@ -20,7 +20,7 @@
 */
     var CountDown=function(options){
         var that=this;
-        var today=new Date().getTime();
+        var today=Date.now();
         that.options={
             template:'<span class="label">距结束：</span><span class="number" id="countdown_day_{{id}}">{{day}}</span>天<span class="number" id="countdown_hour_{{id}}">{{hour}}</span>时<span class="number" id="countdown_minutes_{{id}}">{{minutes}}</span>分<span class="number" id="countdown_seconds_{{id}}">{{seconds}}</span>秒',
             id:"countdown",//对象ID
@@ -35,7 +35,9 @@
         for(var i in options){
             that.options[i]=options[i];
         }
+		that.options.ext=that.options.id+that.options.ext+Math.round(100*Math.random(10));
         var id=that.options.ext;
+		console.log("id=="+id);
         that.options.template=that.options.template.replace(/(\{\{)\s*(\w)\s*(\}\})/g,"$1$2$3").replace(/\{\{id\}\}/g,id);
         var countObj=$(that.options.id);
         if(countObj){
